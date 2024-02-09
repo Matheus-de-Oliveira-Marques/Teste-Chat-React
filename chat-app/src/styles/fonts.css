@@ -1,0 +1,35 @@
+@font-face {
+    font-family: "Inter-Regular";
+    src: url(../../public/fonts/Inter-Regular.ttf);
+}
+
+@font-face {
+    font-family: "Inter-Thin";
+    src: url(../../public/fonts/Inter-Thin.ttf);
+}
+
+
+@font-face {
+    font-family: "Inter-Bold";
+    src: url(../../public/fonts/Inter-Bold.ttf);
+}
+
+@font-face {
+    font-family: "Inter-Bold-Extra";
+    src: url(../../public/fonts/Inter-ExtraBold.ttf);
+}
+
+
+
+@font-face {
+    font-family: "Inter-ExtraBold";
+    src: url(../../public/fonts/Inter-ExtraBold.ttf);
+}
+
+
+body{
+    background:radial-gradient(circle, rgba(30,28,42,1) 0%, rgba(64,61,81,1) 100%);
+    margin: 0px
+
+}
+

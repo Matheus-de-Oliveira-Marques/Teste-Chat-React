@@ -1,0 +1,107 @@
+body{
+    background: linear-gradient(0deg, rgba(140,170,197,1) 0%, rgba(199,219,221,1) 100%);    
+    margin:0px;
+    height: 100vh;
+}
+
+footer{
+    background: linear-gradient(0deg, rgba(140,170,197,1) 0%, rgba(199,219,221,1) 100%);    
+    margin: 10px;
+}
+
+
+.LinkBack{
+
+    text-decoration: none;
+    color: #2B87EC;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: "Inter-Regular",sans-serif;
+    display: flex;
+    align-items: center;
+
+}
+
+
+.imgLogo{
+    background-image: url(../../../public/images/live-chat.png);
+    height: 35rem;
+    margin: 10%;
+    background-repeat: no-repeat;
+    width: 32rem;
+
+}
+
+.btnBackLogin{
+    position: absolute;
+    align-items: center;
+    text-align: center;
+    display: flex;
+
+    top:10px;
+    left: 10px;
+}
+
+.boxContainerRegister{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    height: max-content;
+
+
+}
+
+.TittleRegister{
+    font-family: "Inter-Bold",sans-serif;
+    color:#252836;
+    margin-top:10rem;
+
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.TittleApp{
+    font-family: "Inter-Bold",sans-serif;
+    color:#fff;
+    margin-top:10rem;
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.boxFormRegister{
+    margin: 10px;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    min-width: 300px;
+    min-height: 340px;
+    padding:5px;
+}
+
+
+.RegisterImage{
+    height: 70%;
+    width: 90%;
+}
+
+.RegisterRight{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.SiderLeft{
+justify-content: center;
+align-items: center;
+text-align: center;
+background-color: #fff;
+height: 102vh;
+
+margin: 0px;
+
+}
