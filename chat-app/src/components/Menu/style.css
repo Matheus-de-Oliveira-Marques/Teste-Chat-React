@@ -1,0 +1,117 @@
+@import url(../../fonts.css);
+
+.BodyMenu {
+    align-items: center;
+    text-align: center;
+    background-color: #ffffff;
+    display: grid;
+    font-family:"Inter-Regular";
+    height: 100%;
+    padding-left: 1px;
+    justify-content: left;
+    border-top-right-radius: 5%;
+    position:fixed;
+    border-bottom-right-radius: 5%;
+
+
+}
+
+.ActiveMenu {
+    font-family:"Inter-Bold";
+    color:#3A94DA;
+    padding: 5px;
+    background-color: #fff;
+    font-size: 11px;
+    align-items: center;
+    border:none;
+    display:flex;
+    justify-content: space-around;
+    min-width:150px;
+    transition: 1s;
+}
+
+.ActiveIcon{
+    color:#fff;
+    background-color: #3A94DA;
+    border-radius: 10px;
+    padding: 5px;
+    transition: 1s;
+
+}
+
+
+.DesativeMenu{
+    font-family:"Inter-Regular";
+    color:#828293;
+    font-family:"Inter-Bold";
+    padding: 5px;
+    background-color: #fff;
+    font-size: 11px;
+    align-items: center;
+    border:none;
+    display:flex;
+    justify-content: space-around;
+    min-width:150px;
+    transition: 1s;
+
+}
+
+
+.DesativeIcon{
+    color:#ffff;
+    background-color: #B4B5BC;
+    border-radius: 10px;
+    padding: 5px;
+    transition: 1s;
+
+}
+
+
+
+.DesativeMenu:hover {
+    font-family:"Inter-Bold";
+    color:#3A94DA;
+    padding: 5px;
+    background-color: #fff;
+    font-size: 11px;
+    align-items: center;
+    border:none;
+    display:flex;
+    justify-content: space-around;
+    min-width:150px;
+    transition: 0.5s;
+}
+
+.DesativeIcon:hover{
+    color:#fff;
+    background-color: #3A94DA;
+    border-radius: 10px;
+    padding: 5px;
+    transition: 0.5s;
+
+}
+
+.BtnUser{
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    width: auto;
+    border:none;
+    min-width:150px;
+    background-color: #fff;
+    font-family: 'Inter-Bold';
+    font-size: 11px;
+    color:#010101   
+}
+
+.UserPhoto{    
+    width: 31px;
+    display: flex;
+    height: 30px;
+    padding: 6px;
+    border-radius: 100%;
+    margin-right: 13px;
+
+}
+

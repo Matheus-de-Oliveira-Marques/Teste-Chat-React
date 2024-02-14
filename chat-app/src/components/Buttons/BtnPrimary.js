@@ -11,6 +11,7 @@ const BootstrapButton = styled(Button)({
     padding: '6px 12px',
     border: '1px solid',
     lineHeight: 1.5,
+    marginTop:20,
     backgroundColor: '#0063cc',
     width:'30%',
     borderColor: '#0063cc',
@@ -46,7 +47,7 @@ const BtnPrimary = () => {
 
     return (
         <div>
-        <BootstrapButton size="medium" variant="contained">Entrar</BootstrapButton>
+        <BootstrapButton size="medium" variant="contained" type='submit'>ENTRAR</BootstrapButton>
         </div>
     )
 }

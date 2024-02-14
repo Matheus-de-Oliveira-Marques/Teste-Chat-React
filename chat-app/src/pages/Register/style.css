@@ -1,13 +1,10 @@
 body{
     background: linear-gradient(0deg, rgba(140,170,197,1) 0%, rgba(199,219,221,1) 100%);    
     margin:0px;
-    height: 100vh;
+    overflow:hidden;
 }
 
-footer{
-    background: linear-gradient(0deg, rgba(140,170,197,1) 0%, rgba(199,219,221,1) 100%);    
-    margin: 10px;
-}
+
 
 
 .LinkBack{
@@ -29,6 +26,7 @@ footer{
     margin: 10%;
     background-repeat: no-repeat;
     width: 32rem;
+    box-shadow: 10px;
 
 }
 

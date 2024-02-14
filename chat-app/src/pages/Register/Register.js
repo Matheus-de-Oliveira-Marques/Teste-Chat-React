@@ -5,7 +5,7 @@ import { signup } from '../../services/authService';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
-import BtnPrimary from '../Buttons/BtnPrimary';
+import BtnPrimary from '../../components/Buttons/BtnPrimary';
 import { Link } from 'react-router-dom'
 
 
@@ -15,33 +15,37 @@ const Register = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [name, setName] = useState('');
-    // const [photo, setPhoto] = useState('');
+    const [photo, setPhoto] = useState('');
     const [sucess, setSucess] = useState(false)
     const [erro, setError] = useState(false)
 
     const navigate = useNavigate();
 
+    const DEFAULT_PHOTO_URL = 'https://mtpost.com.br/wp-content/uploads/2022/09/flork-desenho-meme.jpg';
+
+
     const submitRegister = async (e) => {
         e.preventDefault()
 
         try {
-            await signup(email, password, name);
+            // Se não houver foto, usar a URL padrão
+            const photoUrl = photo || DEFAULT_PHOTO_URL;
+            await signup(email, password, name, photoUrl);
             alert('Cadastro realizado com sucesso!');
-            setSucess(true)
+            setSucess(true);
 
-            //por status de sucesso e criar modal para levar a pagina de login
-
-        } catch (error) {
+            
+          } catch (error) {
             alert('Erro ao criar conta: ' + error.message);
-            setError(true)
-
-        }
+            setError(true);
+          }
     }
 
-    // const handleFileChange = (e) => {
-    //     const file = e.target.files[0];
-    //     setPhoto(file);
-    //   };
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        setPhoto(file ? file : DEFAULT_PHOTO_URL);
+
+      };
 
 
     return (
@@ -66,13 +70,8 @@ const Register = () => {
                             placeholder='Nome:'
                         />
 
-                        {/* <input
-                         type="file"
-                         accept="image/*"
-                         onChange={handleFileChange}
-                 
-                        placeholder="URL da foto (opcional)"
-                    /> */}
+                            <input type="file" accept="image/*" onChange={handleFileChange} />
+
                         <TextField
                             id="outlined-basic"
                             label="E-mail:"

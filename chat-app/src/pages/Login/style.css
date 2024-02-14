@@ -1,0 +1,81 @@
+@import url(../../fonts.css);
+
+.TittleLogin{
+    font-family: "Inter-Bold-Extra";
+    color:#ffff;
+    font-size: 32px;
+    font-weight: 900;
+}
+
+.boxContainerLogin{ 
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    position: absolute;
+    top: 5%;
+    left: 30%;
+}
+
+.ForgotText{
+    display: flex;
+    justify-content: left;
+    font-size: 14px;
+    margin-left: 18%;
+    color:#252836;
+    align-items: center;
+    margin-top: -30px;
+}
+
+.ContentLogin{
+    background-color: #fff;
+    width: 500px;
+    border-radius: 20px;
+    margin-top: 5rem;
+    padding-top: 10px;
+    display: grid;
+    align-items: center;
+    text-align: center;
+    box-shadow: 3px 3px 3px 3px #25283642;
+    justify-content: center;
+}
+
+
+#outlined-basic{
+
+    align-items: center;
+    text-align: left;
+    display: flex;
+}
+
+.Link{
+    text-decoration: none;
+    color:#2B87EC;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: "Inter-Regular";
+}
+
+.TexthasCont{
+    color:#252836;
+    margin-top: 10%;
+}
+
+
+p{
+    font-family: "Inter-Regular";
+    font-size: 14px;
+    letter-spacing: 0.5;
+}
+
+.logoSmall{
+    background-image: url(../../../public/images/live-chat-mobile2.png);
+    height: 5rem;
+    background-repeat: no-repeat;
+    width: 4rem;
+
+}
+
+.ContainerLogo{
+    display: flex;
+    justify-content: center;
+}
