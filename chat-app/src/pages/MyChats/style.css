@@ -1,0 +1,100 @@
+@import url(../../fonts.css);
+
+
+
+.DivListChats{
+    background-color:#E4E5ED;
+    width: 100%;
+
+}
+
+.AllCard{
+    margin: 15px;
+    padding: 5px;
+    border-radius: 10px;
+    height: 250px;
+    width: 90%;
+    align-items: center;
+    font-family: 'Inter-Thin';
+}
+
+.CardContent{
+    display:flex;
+    padding: 5px !important
+
+}
+
+.CardHeader{
+
+    height: 1px;
+    margin-top: 0px;
+    display: grid !important;
+    justify-content: end;
+    padding: 10px !important;
+}
+
+.imageChat{
+    max-width:300px;
+    max-height: 200px;
+    border-radius: 30px !important;
+    padding: 5px;
+
+}
+
+.NameChat{
+    font-family: "Inter-Bold";
+    font-size: 32px;
+    color:#010101;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    margin-bottom: 0px;
+
+}
+
+.DescChat{
+    font-family: "Inter-Regular";
+    font-size: 15px;
+    color:#838383e3;
+    text-transform: capitalize;
+    margin-left: 1px;
+
+}
+
+.LittleInfos{
+    width: -webkit-fill-available;
+    margin-left: 20px;
+
+}
+
+.BtnRow{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.BtnEnterChat{
+    font-family: 'Inter-Regular';
+    text-transform: capitalize;
+    color:#fff;
+    background-color: #2B87EC;
+    border: none;
+    width: 15%;
+    height: 10%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 2%;
+    align-items: center;
+    
+}
+
+.CardDivider{
+    border-width: 1px;
+    margin-right: 20px;
+    margin-left: 20px;
+    width: 90%;
+    border-style: solid;
+    border-color: rgb(228 228 228 / 20%);
+    border-bottom-width: 0.1px;
+
+}

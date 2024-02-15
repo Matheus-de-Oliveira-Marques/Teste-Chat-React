@@ -53,7 +53,7 @@ const Index = () => {
               onItemClick={(roomId) => handleMenuClick("chatRoom", roomId)}
             />
           )}
-          {/* {activeScreen === "chatRoom" && <ChatRoom roomId={selectedRoomId} />} */}
+          {activeScreen === "MyChats" && <MyChats userId={userId}  roomId={selectedRoomId} />}
           {activeScreen === "settings" && <Settings />}
           {activeScreen === "createChat" && <CreateChat userId={userId} />}
         </Grid>

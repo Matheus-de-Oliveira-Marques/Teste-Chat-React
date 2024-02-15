@@ -24,7 +24,22 @@ const Menu = ({ activeScreen, onItemClick, userParamsFirebase, currentUser }) =>
             activeScreen === "chatList" ? "ActiveIcon" : "DesativeIcon"
           }
         />
-        Conversas
+          Todos os Chats 
+      </button>
+
+      
+      <button
+        className={
+          activeScreen === "myChats" ? "ActiveMenu" : "DesativeMenu"
+        }
+        onClick={() => onItemClick("createChat")}
+      >
+        <GroupAddIcon
+          className={
+            activeScreen === "myChats" ? "ActiveIcon" : "DesativeIcon"
+          }
+        />
+        Minhas Conversas
       </button>
 
       <button

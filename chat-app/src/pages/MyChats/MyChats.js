@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getChatRooms } from "../../services/getChatRooms";
+import { getUsersInRoom } from "../../services/getUsersInRoom";
 import { joinChat, leaveChat } from "../../services/EnterAndLeavChat";
 import Skeleton from "@mui/material/Skeleton";
 import {
@@ -16,46 +17,14 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 import "./style.css";
 
-const ChatList = ({ userId }) => {
+const MyChats = ({ userId }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
-
-  const handleRoomClick = async (roomId, isPrivate, invitees) => {
-    try {
-      if (!isPrivate || invitees.includes(userId)) {
-        await handleJoinLeaveChat(roomId, isPrivate);
-        // Redirecionar o usuário para o ChatRoom com o ID da sala
-        history.push(`/chat-room/${roomId}`);
-      } else {
-        alert("Esta sala é privada e requer um convite para entrar.");
-      }
-    } catch (error) {
-      console.error("Erro ao verificar sala de chat:", error);
-    }
-  };
-
-  const handleJoinLeaveChat = async (roomId, isPrivate, participants) => {
-    try {
-      if (!participants.includes(userId)) {
-        // Se o usuário não estiver na lista de participantes, entra no chat
-        await joinChat(roomId, userId);
-      } else {
-        // Caso contrário, sai do chat
-        await leaveChat(roomId, userId);
-      }
-      // Atualiza a lista de salas de chat após a entrada/saída do chat
-      const updatedRooms = await getChatRooms();
-      setChatRooms(updatedRooms);
-    } catch (error) {
-      console.error("Erro ao entrar/sair do chat:", error);
-    }
-  };
 
   useEffect(() => {
     const fetchChatRooms = async () => {
       try {
-        const rooms = await getChatRooms();
+        const rooms = await getChatRooms(userId);
         setChatRooms(rooms);
       } catch (error) {
         console.error("Erro ao obter salas de chat:", error);
@@ -73,11 +42,9 @@ const ChatList = ({ userId }) => {
     finishLoading();
   }, []);
 
-  console.log("SAAALAS", chatRooms);
-
   return (
     <div className="DivListChats">
-      <h2>Salas de Chat Disponíveis</h2>
+      <h2>Minhas Salas</h2>
       <ul>
         {chatRooms.map((room) =>
           !loading ? (
@@ -107,22 +74,9 @@ const ChatList = ({ userId }) => {
                     </p>
                   </div>
                   <div className="BtnRow">
-                    <button
-                      className="BtnEnterChat"
-                      onClick={() =>
-                        handleRoomClick(
-                          room.id,
-                          room.isPrivate,
-                          room.invitees,
-                          room.name,
-                          room.photo
-                        )
-                      }
-                    >
-                      {room.participants.includes(userId)
-                        ? "Sair"
-                        : "Entrar"}
-                    </button>
+                    <Link to={`/chat-room/${room.id}`} className="BtnEnterChat">
+                      ChatRoom
+                    </Link>
                   </div>
                 </div>
               </CardContent>
@@ -135,6 +89,7 @@ const ChatList = ({ userId }) => {
                 width="80%"
                 height="40"
               />
+
               <Skeleton animation="wave" width="40%" />
               <Skeleton animation="wave" width="80%" />
             </Box>
@@ -145,4 +100,4 @@ const ChatList = ({ userId }) => {
   );
 };
 
-export default ChatList;
+export default MyChats;
