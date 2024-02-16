@@ -10,7 +10,7 @@ import Paper from "@mui/material/Paper";
 import Grid from "@mui/material/Grid";
 import { useParams } from "react-router-dom";
 import { useAuth } from '../../services/AuthProvider';
-
+import MyChats from '../MyChats/MyChats';
 import { getUserInfo } from "../../services/getUserInfos";
 
 const Index = () => {
@@ -50,6 +50,7 @@ const Index = () => {
         <Grid item xs={8.5}>
           {activeScreen === "chatList" && (
             <ChatList
+            userId={userId}
               onItemClick={(roomId) => handleMenuClick("chatRoom", roomId)}
             />
           )}

@@ -1,0 +1,47 @@
+@import url(../../fonts.css);
+
+
+
+.HeaderChat{
+    height: 40px;
+    display: flex;
+    padding: 10px;
+    width: -webkit-fill-available;
+    justify-content: end;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    
+
+}
+
+.Talks{
+    overflow-y: scroll;
+    max-height: 90vh;
+}
+
+
+.BtnExitChat{
+    font-family: 'Inter-Regular' !important;
+    text-transform: capitalize !important;
+
+}
+
+.ListOfMyChats{
+
+    background-color: #fff;
+    margin: 0px;
+    display: flex;
+    justify-content: left;
+    margin-left: -40px !important;
+    width: max-content;
+
+}
+
+
+.DividerLeft{
+
+}
+
+.ContentChats{
+    margin-top:8px!important;
+}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import  { useNavigate }  from "react-router-dom";
 import { getChatRooms } from "../../services/getChatRooms";
 import { joinChat, leaveChat } from "../../services/EnterAndLeavChat";
 import Skeleton from "@mui/material/Skeleton";
@@ -19,27 +19,22 @@ import "./style.css";
 const ChatList = ({ userId }) => {
   const [chatRooms, setChatRooms] = useState([]);
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
+  const [allInfoUSer, setAllInfoUser] = useState('');
+  const navigate = useNavigate();
 
-  const handleRoomClick = async (roomId, isPrivate, invitees) => {
-    try {
-      if (!isPrivate || invitees.includes(userId)) {
-        await handleJoinLeaveChat(roomId, isPrivate);
-        // Redirecionar o usuário para o ChatRoom com o ID da sala
-        history.push(`/chat-room/${roomId}`);
-      } else {
-        alert("Esta sala é privada e requer um convite para entrar.");
-      }
-    } catch (error) {
-      console.error("Erro ao verificar sala de chat:", error);
-    }
-  };
+ 
 
-  const handleJoinLeaveChat = async (roomId, isPrivate, participants) => {
+  const handleJoinLeaveChat = async (roomId, isPrivate,invitees ,userId, name,photo, participants) => {
     try {
-      if (!participants.includes(userId)) {
+
+     
+      const photoUrl = photo === undefined ?  'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6' : photo
+
+      if (!participants.includes(userId) && !isPrivate || invitees.includes(userId)) {
         // Se o usuário não estiver na lista de participantes, entra no chat
         await joinChat(roomId, userId);
+        navigate(`/chatRoom/${roomId}`);
+
       } else {
         // Caso contrário, sai do chat
         await leaveChat(roomId, userId);
@@ -48,7 +43,7 @@ const ChatList = ({ userId }) => {
       const updatedRooms = await getChatRooms();
       setChatRooms(updatedRooms);
     } catch (error) {
-      console.error("Erro ao entrar/sair do chat:", error);
+    alert('Sala Bloqueada');
     }
   };
 
@@ -66,21 +61,29 @@ const ChatList = ({ userId }) => {
       setLoading(true);
       setTimeout(() => {
         setLoading(false);
-      }, 3000);
+      }, 5000);
     };
 
     fetchChatRooms();
-    finishLoading();
+    finishLoading();    
+
+
   }, []);
 
-  console.log("SAAALAS", chatRooms);
+
+  console.log('PIMBEI',chatRooms)
+
 
   return (
     <div className="DivListChats">
-      <h2>Salas de Chat Disponíveis</h2>
-      <ul>
+      <h2 className="TitlePage">Chats Disponiveis</h2>
+      <ul className="ContentChats">
         {chatRooms.map((room) =>
+
+
+
           !loading ? (
+            
             <Card key={room.id} className="AllCard">
               <CardHeader
                 className="CardHeader"
@@ -93,7 +96,7 @@ const ChatList = ({ userId }) => {
                 <CardMedia
                   component="img"
                   height="194"
-                  image="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6"
+                  image={room.photo}
                   className="imageChat"
                 />
                 <div  className="LittleInfos">
@@ -110,12 +113,14 @@ const ChatList = ({ userId }) => {
                     <button
                       className="BtnEnterChat"
                       onClick={() =>
-                        handleRoomClick(
+                        handleJoinLeaveChat(
                           room.id,
                           room.isPrivate,
                           room.invitees,
+                          userId,
                           room.name,
-                          room.photo
+                          room.photo,
+                          room.participants.join(", ")
                         )
                       }
                     >
@@ -128,10 +133,10 @@ const ChatList = ({ userId }) => {
               </CardContent>
             </Card>
           ) : (
-            <Box sx={{ pt: 0.5 }}>
+            <Box sx={{ pt: 1 }} style={{margin:10}} >
               <Skeleton
                 animation="wave"
-                variant="rectangular"
+                variant="rectangqular"
                 width="80%"
                 height="40"
               />

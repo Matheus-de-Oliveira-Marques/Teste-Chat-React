@@ -5,6 +5,28 @@ body{
 }
 
 
+.DivCreatChat{
+    align-items: center;
+    text-align: center;
+    display: grid;
+    justify-content: center;
+  
+}
+
+.formChat{
+    display: grid;
+    background-color: #fff;
+    border-radius: 10px;
+    justify-content: center;
+    padding: 20px;
+    font-family:"Inter-Regular";
+}
+
+.TitlePageChat{
+    color: #2B87EC;
+    font-size: 34px;
+    font-family: "Inter-Bold";
+}
 
 
 .LinkBack{
@@ -111,4 +133,13 @@ margin: 0px;
     font-family: 'Inter-Regular';
     margin: 10px;
 
+}
+
+.CheckBoxLabel{
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-family: 'Inter-Regular';
+    font-size: 10px;
+    
 }

@@ -4,6 +4,7 @@ import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
 import SettingsIcon from "@mui/icons-material/Settings";
 import Divider from '@mui/material/Divider';
+import ForumIcon from '@mui/icons-material/Forum';
 
 
 const Menu = ({ activeScreen, onItemClick, userParamsFirebase, currentUser }) => {
@@ -11,7 +12,8 @@ const Menu = ({ activeScreen, onItemClick, userParamsFirebase, currentUser }) =>
   const photo = userParamsFirebase?.photoURL
   const nameUser = currentUser.displayName;
 
-  console.log('activeScreen',activeScreen)
+
+
 
   return (
     <div className="BodyMenu">
@@ -24,22 +26,22 @@ const Menu = ({ activeScreen, onItemClick, userParamsFirebase, currentUser }) =>
             activeScreen === "chatList" ? "ActiveIcon" : "DesativeIcon"
           }
         />
-          Todos os Chats 
+         Explore Chats 
       </button>
 
       
       <button
         className={
-          activeScreen === "myChats" ? "ActiveMenu" : "DesativeMenu"
+          activeScreen === "MyChats" ? "ActiveMenu" : "DesativeMenu"
         }
-        onClick={() => onItemClick("createChat")}
+        onClick={() => onItemClick("MyChats")}
       >
-        <GroupAddIcon
+        <ForumIcon
           className={
-            activeScreen === "myChats" ? "ActiveIcon" : "DesativeIcon"
+            activeScreen === "MyChats" ? "ActiveIcon" : "DesativeIcon"
           }
         />
-        Minhas Conversas
+         Conversas
       </button>
 
       <button
@@ -58,7 +60,7 @@ const Menu = ({ activeScreen, onItemClick, userParamsFirebase, currentUser }) =>
 
       <Divider />
 
-      <button
+      {/* <button
         className={activeScreen === "settings" ? "ActiveMenu" : "DesativeMenu"}
         onClick={() => onItemClick("settings")}
       >
@@ -68,7 +70,7 @@ const Menu = ({ activeScreen, onItemClick, userParamsFirebase, currentUser }) =>
           }
         />
         Configurações
-      </button>
+      </button> */}
 
       <button className="BtnUser">
         <img src={photo} className="UserPhoto" />

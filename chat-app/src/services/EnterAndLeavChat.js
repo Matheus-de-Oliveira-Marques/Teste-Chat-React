@@ -1,8 +1,11 @@
 // Serviço de Entrada no Chat
-import { collection, getDocs , doc, updateDoc, arrayUnion,arrayRemove} from "firebase/firestore";
+import { collection, getDoc , doc, updateDoc, arrayUnion,arrayRemove} from "firebase/firestore";
 import { db } from "../firebaseConfig";
 
-export const joinChat = async (roomId, userId, name, photo) => {
+export const joinChat = async (roomId, userId) => {
+
+  console.log('roomId, userId',roomId, userId)
+
   try {
     const roomRef = doc(db, "chatRooms", roomId);
     const roomSnap = await getDoc(roomRef);
@@ -13,7 +16,7 @@ export const joinChat = async (roomId, userId, name, photo) => {
     }
 
     await updateDoc(roomRef, {
-      participants: arrayUnion({ userId, name, photo }) // Adiciona o usuário à lista de participantes
+      participants: arrayUnion(userId ) // Adiciona o usuário à lista de participantes
     });
 
     return roomId; // Retorne o ID da sala para redirecionamento, se necessário

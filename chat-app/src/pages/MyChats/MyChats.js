@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getChatRooms } from "../../services/getChatRooms";
+import { getChatRoomsByUserId } from "../../services/getChatRooms";
 import { getUsersInRoom } from "../../services/getUsersInRoom";
 import { joinChat, leaveChat } from "../../services/EnterAndLeavChat";
 import Skeleton from "@mui/material/Skeleton";
@@ -24,7 +24,7 @@ const MyChats = ({ userId }) => {
   useEffect(() => {
     const fetchChatRooms = async () => {
       try {
-        const rooms = await getChatRooms(userId);
+        const rooms = await getChatRoomsByUserId(userId);
         setChatRooms(rooms);
       } catch (error) {
         console.error("Erro ao obter salas de chat:", error);
@@ -42,44 +42,39 @@ const MyChats = ({ userId }) => {
     finishLoading();
   }, []);
 
+
+  console.log('chatRooms',chatRooms)
+
   return (
-    <div className="DivListChats">
-      <h2>Minhas Salas</h2>
+    <div className="DivListChatsMY">
+      <h2 className="TitlePage">Minhas Conversas</h2>
       <ul>
         {chatRooms.map((room) =>
           !loading ? (
-            <Card key={room.id} className="AllCard">
-              <CardHeader
-                className="CardHeader"
-                title={
-                  room.isPrivate ? <LockIcon color="disabled" size="medium"/>  : <LockOpenIcon color="disabled" size="medium"/>
-                }
-              />
 
-              <CardContent className="CardContent">
+            <Card key={room.id} className="AllMyCard">
+              <Link to={`/chatRoom/${room.id}`} style={{textDecoration:'none'}}>
+                    
+              <CardContent className="CardContentMy">
                 <CardMedia
                   component="img"
                   height="194"
-                  image="https://images.unsplash.com/photo-1516802273409-68526ee1bdd6"
-                  className="imageChat"
+                  image={room.photo}
+                  className="imageMyChat"
                 />
                 <div  className="LittleInfos">
-                  <p className="NameChat">{room.name}</p>
-                  <p className="DescChat">{room.description}</p>
-
-                  <Divider className="CardDivider"/>
-                  <div className="ParticipantesList">
-                    <p className="TextParticipants">
+                  <p className="NameMyChat">{room.name}</p>
+                  <div className="ParticipantesListMY">
+                    <p className="TextParticipantsMy">
                       Participantes: {room.participants.join(", ")}
                     </p>
                   </div>
-                  <div className="BtnRow">
-                    <Link to={`/chat-room/${room.id}`} className="BtnEnterChat">
-                      ChatRoom
-                    </Link>
-                  </div>
+                  
                 </div>
+           
               </CardContent>
+        
+                </Link>
             </Card>
           ) : (
             <Box sx={{ pt: 0.5 }}>

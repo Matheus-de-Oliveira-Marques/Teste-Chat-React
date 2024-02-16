@@ -9,6 +9,7 @@ import Button, { ButtonProps } from '@mui/material/Button';
 
 import './style.css'
 import ForgotPassword from '../../components/Modals/ForgotPassword';
+import UserNotExist from '../../components/Modals/UserNotExist';
 
 
   
@@ -20,6 +21,7 @@ const Login = () => {
 
 
     const [open, setOpen] = useState(false);
+    const [modalInfo,setModalInfo] = useState(false)
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
@@ -33,6 +35,7 @@ const Login = () => {
             navigate(`/home/${userId}`); 
          
         } catch (error) {
+            setModalInfo(true)
             console.error('Erro ao fazer login:', error);
             // Exibir mensagem de erro para o usuário, se necessário
         }
@@ -77,6 +80,7 @@ const Login = () => {
                             <p  className='ForgotText'>Esqueceu a Senha? <Button style={{textTransform:'capitalize'}} onClick={handleOpen}>Clique aqui </Button></p>
 
                             <BtnPrimary type="submit" onClick={submitLogin} >Entrar</BtnPrimary>
+                            <UserNotExist open={modalInfo} handleClose={handleClose}/>
 
                         </form>
                         <p className='TexthasCont'>Não tem conta? <Link to="/register" className='Link'>Cadastre-se</Link></p>

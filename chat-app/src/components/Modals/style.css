@@ -10,6 +10,39 @@
 
 }
 
+.BoxModal{
+    display: grid;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.Link{
+    text-decoration: none;
+    color:#2B87EC;
+    border-radius: 20px;
+    font-size: 14px;
+    font-family: "Inter-Regular";
+}
+
+.UserDont{
+    font-family: "Inter-Bold";
+    color:#e3b51b;
+    font-size: 20px;
+}
+
+.UserSucess{
+    font-family: "Inter-Bold";
+    color:#1be31e;
+    font-size: 20px;
+}
+
+.ErrorMessages{
+    font-family: "Inter-Bold";
+    color:#e31b1b;
+    font-size: 20px;
+}
+
 .FormRecovery{
     display: grid;
     justify-content: center;

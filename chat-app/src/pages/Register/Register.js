@@ -10,15 +10,19 @@ import { Link } from 'react-router-dom'
 
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import SuccessRegister from '../../components/Modals/SuccessRegister';
+import ErrorRegister from '../../components/Modals/ErrorRegister';
 
 const Register = () => {
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     const [name, setName] = useState('');
     const [photo, setPhoto] = useState('');
-    const [sucess, setSucess] = useState(false)
     const [erro, setError] = useState(false)
-
+    const [modalInfo,setModalInfo] = useState(false)
+    const [open, setOpen] = useState(false)
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     const navigate = useNavigate();
 
     const DEFAULT_PHOTO_URL = 'https://mtpost.com.br/wp-content/uploads/2022/09/flork-desenho-meme.jpg';
@@ -31,12 +35,10 @@ const Register = () => {
             // Se não houver foto, usar a URL padrão
             const photoUrl = photo || DEFAULT_PHOTO_URL;
             await signup(email, password, name, photoUrl);
-            alert('Cadastro realizado com sucesso!');
-            setSucess(true);
+            setModalInfo(true)
 
             
           } catch (error) {
-            alert('Erro ao criar conta: ' + error.message);
             setError(true);
           }
     }
@@ -70,7 +72,7 @@ const Register = () => {
                             placeholder='Nome:'
                         />
 
-                            <input type="file" accept="image/*" onChange={handleFileChange} />
+                            {/* <input type="file" className="FileInput" accept="image/*" onChange={handleFileChange} /> */}
 
                         <TextField
                             id="outlined-basic"
@@ -98,7 +100,8 @@ const Register = () => {
                         />
 
                         <BtnPrimary type="submit"  >Cadastrar</BtnPrimary>
-
+                        <SuccessRegister open={modalInfo} handleClose={handleClose}/>
+                        <ErrorRegister open={erro} handleClose={handleClose}/>
                     </form>
                 </Grid>
                 <Grid item xs={6}>

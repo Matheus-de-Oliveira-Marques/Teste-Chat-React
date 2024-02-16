@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import SendMessage from './components/SendMessage';
-import { getMessagesRealtime } from '../../services/messagesRoom';
-import { getUsersInRoom } from '../../services/getUsersInRoom';
-import { useAuth } from '../../services/AuthProvider';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { Link } from 'react-router-dom'
-import { leaveChat, joinChat } from '../../services/EnterAndLeavChat';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import SendMessage from "./components/SendMessage";
+import { getMessagesRealtime } from "../../services/messagesRoom";
+import { getUsersInRoom } from "../../services/getUsersInRoom";
+import { useAuth } from "../../services/AuthProvider";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { Link } from "react-router-dom";
+import { leaveChat, joinChat } from "../../services/EnterAndLeavChat";
+import MyChats from "../MyChats/MyChats";
+import { Box, Button, Divider, Grid } from "@mui/material";
+
+import "./style.css";
+import BoexesMessage from "./components/BoexesMessage/BoxesMessage";
 
 // Componente de Chat Individual
 const ChatRoom = () => {
@@ -17,16 +22,40 @@ const ChatRoom = () => {
 
   const { currentUser } = useAuth();
   const nameUser = currentUser?.displayName;
+  const currentIdUser = currentUser?.uid;
 
   useEffect(() => {
     const unsubscribeMessages = getMessagesRealtime(roomId, setMessages);
+    // const fetchUsersInRoom = async () => {
+    //   try {
+    //     const users = await getUsersInRoom(roomId);
+
+    //     const participants = users.map((users) => users.participants);
+    //     const arrayParticpants = participants.flat();
+    //     setUsersInRoom(arrayParticpants);
+
+    //     // Verificar se o usuário está na lista de participantes da sala
+    //     if (arrayParticpants.includes(currentIdUser)) {
+    //       setIsJoined(true);
+    //     } else {
+    //       setIsJoined(false);
+    //     }
+    //   } catch (error) {
+    //     console.error("Erro ao obter usuários na sala:", error);
+    //   }
+    // };
+    // 
+    // 
+    // 
+    // 
+
     const fetchUsersInRoom = async () => {
       try {
         const users = await getUsersInRoom(roomId);
-        setUsersInRoom(users);
-
+        setUsersInRoom(users); // Defina os usuários na sala como uma lista de objetos de usuário
         // Verificar se o usuário está na lista de participantes da sala
-        if (users.map(user => user.id).includes(currentUser.uid)) {
+        const participantIds = users.map(user => user.id);
+        if (participantIds.includes(currentIdUser)) {
           setIsJoined(true);
         } else {
           setIsJoined(false);
@@ -35,6 +64,7 @@ const ChatRoom = () => {
         console.error("Erro ao obter usuários na sala:", error);
       }
     };
+    
 
     fetchUsersInRoom();
 
@@ -64,24 +94,50 @@ const ChatRoom = () => {
   };
 
   return (
-    <div>
-      <h2>Chat Room</h2>
-      <p>Participantes: {usersInRoom.map(user => user.name).join(", ")}</p>
-      <button onClick={handleJoinLeaveChat}>
-        {isJoined ? "Sair do Chat" : "Entrar no Chat"}
-      </button>
-      <div>
-        {messages.map((msg, index) => (
-          <div key={index}>
-            <p>{msg.text}</p>
-            <p>Enviado por: {msg.createdBy}</p>
-          </div>
-        ))}
+    <div style={{ display: "grid" }}>
+      <div className="HeaderChat">
+        <Button className="BtnExitChat" onClick={handleJoinLeaveChat}>
+          {isJoined ? "Sair" : "Entrar"}
+        </Button>
       </div>
-      <SendMessage roomId={roomId} usersInRoom={usersInRoom} currentUser={nameUser} />
+      <Divider />
+
+      <Box >
+        <Grid container spacing={1} className="ContentChats" >
+          <Grid item xs={4} className="ListOfMyChats">
+            <MyChats userId={currentIdUser} />
+          </Grid>
+
+          <Grid item xs={8} className="Talks">
+            <div>
+              {/* {console.log("MENSAAAGENS", messages)} */}
+              {messages.map((msg, index) => (
+                <div key={index}>
+                  <BoexesMessage
+                    msg={msg.text}
+                    createdAt={msg.createdAt}
+                    createdBy={msg.createdBy}
+                    roomId={roomId}
+                    usersInRoom={usersInRoom}
+                    currentUser={currentIdUser}
+                    nameUser={nameUser}
+
+                  />
+                </div>
+              ))}
+              <SendMessage
+              roomId={roomId}
+              usersInRoom={usersInRoom}
+              currentUser={currentIdUser}
+              nameUser={nameUser}
+            />
+            </div>
+            
+          </Grid>
+        </Grid>
+      </Box>
     </div>
   );
 };
-
 
 export default ChatRoom;

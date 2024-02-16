@@ -2,99 +2,106 @@
 
 
 
-.DivListChats{
-    background-color:#E4E5ED;
+.DivListChatsMY{
     width: 100%;
-
 }
 
-.AllCard{
+.AllMyCard{
     margin: 15px;
     padding: 5px;
     border-radius: 10px;
-    height: 250px;
+    height: 100px;
     width: 90%;
     align-items: center;
     font-family: 'Inter-Thin';
-}
-
-.CardContent{
+    text-decoration: none;
     display:flex;
-    padding: 5px !important
+    align-items:center;
+}
+
+.AllMyCard:hover{
+    background-color: #f1f1f1;
+    opacity: 1;
+    transition: 0.5s;
+}
+
+
+
+.CardContentMy{
+    display:flex;
+    padding: 5px !important;
+    align-items: center;
+    text-decoration: none;
 
 }
 
-.CardHeader{
-
-    height: 1px;
-    margin-top: 0px;
-    display: grid !important;
-    justify-content: end;
-    padding: 10px !important;
-}
-
-.imageChat{
-    max-width:300px;
-    max-height: 200px;
+.imageMyChat{
+    max-width:100px;
+    max-height: 80px;
     border-radius: 30px !important;
     padding: 5px;
-
 }
 
-.NameChat{
+.NameMyChat{
     font-family: "Inter-Bold";
-    font-size: 32px;
+    font-size: 25px;
     color:#010101;
     letter-spacing: 1px;
     text-transform: capitalize;
     margin-bottom: 0px;
+    text-decoration: none;
 
 }
 
-.DescChat{
-    font-family: "Inter-Regular";
-    font-size: 15px;
-    color:#838383e3;
-    text-transform: capitalize;
-    margin-left: 1px;
-
-}
-
-.LittleInfos{
+.LittleInfosMy{
     width: -webkit-fill-available;
     margin-left: 20px;
+    text-decoration: none;
+
 
 }
 
-.BtnRow{
+.BtnRowMy{
     display: flex;
     justify-content: flex-end;
 }
 
-.BtnEnterChat{
+.linkMyChat{
+    text-decoration: none;
+}
+
+.TextParticipantsMy{
+
+}
+
+.ParticipantesListMY{
+    
+}
+
+.BtnEnterMyChat{
     font-family: 'Inter-Regular';
+    text-decoration: none;
     text-transform: capitalize;
     color:#fff;
     background-color: #2B87EC;
     border: none;
-    width: 15%;
-    height: 10%;
+
+    width: 140px;
+    height: 30px;
+    margin-left: 25%;
+    display: grid;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 2%;
-    align-items: center;
     
 }
 
-.CardDivider{
-    border-width: 1px;
-    margin-right: 20px;
-    margin-left: 20px;
-    width: 90%;
-    border-style: solid;
-    border-color: rgb(228 228 228 / 20%);
-    border-bottom-width: 0.1px;
-
+.TitlePage{
+    font-family: "Inter-Bold",sans-serif;
+    color:#fff;
+    margin-top:1rem;
+    font-size: 32px;
+    font-weight: 700;
 }

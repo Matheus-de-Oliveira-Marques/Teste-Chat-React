@@ -9,6 +9,7 @@ import Index from './pages/Home'
 import { AuthProvider } from './services/AuthProvider';
 import PrivateRouter from './PrivateRouter';
 import ChatRoom from './pages/ChatRoom/ChatRoom';
+import MyChats from './pages/MyChats/MyChats';
 
 
 
@@ -35,6 +36,7 @@ const App = () =>{
                     {/* <Private path="/home/:userId" element={<Index/>}/> */}
                     <Route path='/chatRoom/:roomId' element={<ChatRoom/>}/>
 
+                    <Route path='/Mychat/:userId' element={<MyChats/>}/>
                 </Routes>
             </div>
 

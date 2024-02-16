@@ -16,7 +16,22 @@
     width: 90%;
     align-items: center;
     font-family: 'Inter-Thin';
+    transition: 1s;
+    transform: scale(1);
+
+
 }
+
+.ContentChats{
+    overflow-y:scroll;
+    max-height: 80vh;    
+}
+
+.AllCard:hover{
+    transition: 1s;
+    transform: scale(1.1);
+}
+
 
 .CardContent{
     display:flex;
@@ -88,6 +103,14 @@
     
 }
 
+.BtnEnterChat:hover{
+    background-color: #3b83cf;
+    opacity: 1;
+    transition: 0.5s;
+    box-shadow: 5px #E4E5ED;
+}
+
+
 .CardDivider{
     border-width: 1px;
     margin-right: 20px;
@@ -97,4 +120,12 @@
     border-color: rgb(228 228 228 / 20%);
     border-bottom-width: 0.1px;
 
+}
+
+.TitlePage{
+    font-family: "Inter-Bold",sans-serif;
+    color:#fff;
+    margin-top:1rem;
+    font-size: 32px;
+    font-weight: 700;
 }
